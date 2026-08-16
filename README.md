@@ -235,11 +235,23 @@ A held slot glows white so you can see the hold is registered. Locked slots are 
 
 | gesture | what it does |
 |---|---|
-| **short press a pad** | load that project |
+| **short press an occupied pad** | load that project |
+| **short press an empty pad** | start a **blank project** in that slot |
 | **Shift + pad** | save the live machine into that slot |
 | **hold a pad** | save as well |
 
 A slot blinks while saving. Occupied slots are visibly brighter.
+
+**A blank project writes nothing to disk.** Pressing an empty slot clears the machine to a
+fresh state and makes that slot the current one, so the work that follows has somewhere to
+go and a save commits it there. Writing a file at that moment would light the pad as
+occupied while holding nothing — and the guard below would then refuse the first real save,
+which is exactly backwards.
+
+Because it clears the live machine, it **asks first when there is something loaded to
+lose**: the screen shows `NEW n? PRESS AGAIN` and the second press within four seconds does
+it. An empty machine has nothing to protect, so that case acts immediately. It is the same
+confirm-then-act shape the Back button uses.
 
 **A save will not replace a filled slot with an empty machine.** Granola starts empty, so a
 restart — or a crash — leaves nothing loaded; a save pressed afterwards would otherwise

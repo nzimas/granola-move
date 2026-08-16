@@ -833,6 +833,49 @@ class Controller:
         self._dirty = True
         return ok
 
+    def new_project(self, slot: int) -> bool:
+        """Start a blank project in an empty slot.
+
+        Nothing is written to disk. The slot becomes the current one and the machine is
+        cleared to a fresh state, so the work that follows has somewhere to go and a save
+        commits it there. Writing a file here would light the pad as occupied while holding
+        nothing — and would then be refused by the empty-machine guard on the first real
+        save, which is precisely backwards.
+        """
+        if not 0 <= slot < len(self.projects.filled):
+            return False
+        if self.projects.filled[slot]:
+            return False                      # occupied slots load; they do not reset
+        with self._lock:
+            self.running = False
+            self.bridge.run(False)
+            for t in self.model.tracks:
+                t.sample_path, t.sample_name, t.loaded = None, "—", False
+                t.mute = False
+                t.macros = set()
+                t.reset_parameters()
+                t.head = 0.0
+                self.bridge.free(t.index)
+                self.bridge.mute(t.index, False)
+                self.bridge.params(t.index,
+                                   [(SPECS[k].osc_key, v) for k, v in t.values.items()])
+            self.model.focus = 0
+            self.gest.clear()
+            self._rec_track = None
+            self._save_gestures()
+            for i, slot_obj in enumerate(self.fx_slots):
+                slot_obj.active = False
+                slot_obj.locked = False
+                slot_obj.chain = []
+            self.fx_tracks = set()
+            for i in range(N_TRACKS):
+                self.bridge.route(i, False)
+            self._sync_fx_live()
+            self.projects.current = slot
+        self._notify("NEW PROJECT %d" % (slot + 1))
+        self._dirty = True
+        return True
+
     def load_project(self, slot: int) -> bool:
         doc = self.projects.load(slot)
         if doc is None:
@@ -1087,6 +1130,9 @@ class Controller:
             # Released outside the lock: save_project takes it itself, and _dispatch is
             # already holding a reentrant lock so this is safe either way.
             self.save_project(int(arg))
+
+        elif cmd == "newproj":
+            self.new_project(int(arg))
 
         elif cmd == "loadproj":
             self.load_project(int(arg))
