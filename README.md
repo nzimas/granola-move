@@ -21,7 +21,8 @@ pulls back a batch of excerpts, and puts them on pads ready to drop onto tracks.
 port of [SampleHarvester](https://github.com/nzimas/sampleharvester)'s
 discovery layer — the same query generator, the same term filters, the same qualified-random
 selection — running entirely on the device with no ffmpeg, no JVM and no package manager.
-See [The sample harvester](#the-sample-harvester).
+See [The sample harvester](#the-sample-harvester), including
+[what you harvest is your responsibility](#what-you-harvest-is-your-responsibility).
 
 **The playhead is an instrument.** The sixteen step buttons are a position bar for the
 focused track *and* you can play them: tap one and the head cuts there, instantly, with no
@@ -264,6 +265,17 @@ lists.
 ```bash
 python3 tools/test-filter.py
 ```
+
+### What you harvest is your responsibility
+
+The harvester retrieves audio that other people published. Granola does not, and cannot,
+determine the rights attached to anything it fetches — a search result carries no licence
+information, and the term filters select for *musical repertoire*, not for permission.
+
+**Deciding what to do with harvested material is the user's responsibility.** Sampling it,
+performing with it, recording it or releasing it may require clearance that this tool
+neither obtains nor checks. Local law varies; so does what any given platform's terms
+permit. Use it accordingly.
 
 Excerpt length is **4–9 seconds** by default, settable anywhere from 3 to 20 seconds in the
 web UI. A batch persists across view changes, restarts and crashes — every sample is written
