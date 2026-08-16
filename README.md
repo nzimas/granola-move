@@ -248,10 +248,9 @@ go and a save commits it there. Writing a file at that moment would light the pa
 occupied while holding nothing — and the guard below would then refuse the first real save,
 which is exactly backwards.
 
-Because it clears the live machine, it **asks first when there is something loaded to
-lose**: the screen shows `NEW n? PRESS AGAIN` and the second press within four seconds does
-it. An empty machine has nothing to protect, so that case acts immediately. It is the same
-confirm-then-act shape the Back button uses.
+The pad's state alone decides what happens, with no confirmation either way: loading a
+project already replaces the live machine without asking, so making the empty case ask
+would be the same destructive step with arbitrarily different friction.
 
 **A save will not replace a filled slot with an empty machine.** Granola starts empty, so a
 restart — or a crash — leaves nothing loaded; a save pressed afterwards would otherwise

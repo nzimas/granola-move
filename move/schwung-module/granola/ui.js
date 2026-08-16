@@ -250,8 +250,6 @@ let saving = -1;
 let savingLocalUntil = 0;
 /* The pad under the finger in the projects view, and when it went down. */
 let projHeld = -1, projHeldAt = 0, projConsumed = false;
-/* Pending "new blank project" confirmation, and when it lapses. */
-let newConfirm = -1, newConfirmUntil = 0;
 let shiftHeld = false;
 let seq = 0, cmdQueue = [], controlDirty = false;
 let overlay = null, overlayUntil = -1;
@@ -767,7 +765,6 @@ globalThis.init = function () {
     projView = false; projFilled = new Array(N_PROJ).fill(false); projCur = -1; saving = -1;
     savingLocalUntil = 0;
     projHeld = -1; projHeldAt = 0; projConsumed = false;
-    newConfirm = -1; newConfirmUntil = 0;
     seq = 0; cmdQueue = []; controlDirty = false;
     overlay = null; overlayUntil = -1; showUntil = 0;
     ledDirty = true; screenDirty = true; lastLedSig = ''; lastDrawAt = -100;
@@ -913,22 +910,14 @@ globalThis.onMidiMessageInternal = function (data) {
          * otherwise this was a short press, which loads. */
         if (projHeld === slot) {
             if (!projConsumed) {
+                /* Occupied loads, empty starts blank. No confirmation either way:
+                 * loading already replaces the live machine without asking, so making
+                 * the empty case ask would be the same destructive step with arbitrarily
+                 * different friction. The pad's state alone decides what happens. */
                 if (projFilled[slot]) {
                     sendCmd('loadproj', slot); showAction('LOAD ' + (slot + 1));
-                    newConfirm = -1;
-                } else if (loaded.some(Boolean) &&
-                           !(newConfirm === slot && Date.now() < newConfirmUntil)) {
-                    /* A blank project CLEARS the live machine, so when there is something
-                     * loaded to lose it asks once first — the same confirm-then-act shape
-                     * the Back button uses. An empty machine has nothing to protect, so
-                     * that case acts immediately. */
-                    newConfirm = slot;
-                    newConfirmUntil = Date.now() + 4000;
-                    showAction('NEW ' + (slot + 1) + '? PRESS AGAIN');
                 } else {
-                    sendCmd('newproj', slot);
-                    showAction('NEW PROJECT ' + (slot + 1));
-                    newConfirm = -1;
+                    sendCmd('newproj', slot); showAction('NEW PROJECT ' + (slot + 1));
                 }
             }
             projHeld = -1; projConsumed = false;
