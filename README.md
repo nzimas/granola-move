@@ -16,9 +16,9 @@ buttons.
 
 ## What makes it different
 
-**It finds its own samples.** Hold Shift and Track 4 and the harvester goes out to the
-YouTube Music catalogue, pulls back a batch of excerpts, and puts them on pads ready to
-drop onto tracks. It is a port of [SampleHarvester](https://github.com/nzimas/sampleharvester)'s
+**It finds its own samples.** Hold Shift and Track 4 and the harvester goes out to YouTube,
+pulls back a batch of excerpts, and puts them on pads ready to drop onto tracks. It is a
+port of [SampleHarvester](https://github.com/nzimas/sampleharvester)'s
 discovery layer — the same query generator, the same term filters, the same qualified-random
 selection — running entirely on the device with no ffmpeg, no JVM and no package manager.
 See [The sample harvester](#the-sample-harvester).
@@ -244,9 +244,9 @@ A slot blinks while saving. Occupied slots are visibly brighter.
 
 ## The sample harvester
 
-The harvester searches the **YouTube Music songs catalogue** — not YouTube — because that
-catalogue contains catalogued music and nothing else. It then filters and ranks what it
-finds before fetching a single byte of audio:
+The harvester searches **YouTube's music catalogue** — the songs listing rather than
+general video search — because that catalogue contains catalogued music and nothing else.
+It then filters and ranks what it finds before fetching a single byte of audio:
 
 | layer | |
 |---|---|
