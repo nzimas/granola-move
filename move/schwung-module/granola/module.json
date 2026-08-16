@@ -1,0 +1,21 @@
+{
+    "id": "granola",
+    "name": "Granola",
+    "abbrev": "GRN",
+    "version": "20260816",
+    "description": "Granola for Move — eight-track granular synthesiser with a sample harvester, 154 Airwindows performance effects, a playable playhead and recordable playhead gesture loops. SuperCollider engine (GrainBuf), ported from the macOS Granola.",
+    "author": "nzimas",
+    "license": "MIT",
+    "ui": "ui.js",
+    "api_version": 2,
+    "component_type": "overtake",
+    "requires_path": "/data/UserData/granola/run-stack.sh",
+    "capabilities": {
+        "audio_out": true,
+        "audio_in": false,
+        "midi_in": true,
+        "midi_out": false,
+        "aftertouch": false,
+        "claims_master_knob": true
+    }
+}

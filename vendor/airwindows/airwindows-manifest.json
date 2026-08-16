@@ -1,0 +1,2274 @@
+[
+ {
+  "name": "DeRez",
+  "paramCount": 2,
+  "paramNames": [
+   "Rate",
+   "Rez"
+  ],
+  "defaults": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "DeRez2",
+  "paramCount": 4,
+  "paramNames": [
+   "Rate",
+   "Rez",
+   "Hard",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "DeRez3",
+  "paramCount": 3,
+  "paramNames": [
+   "Rate",
+   "Rez",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "DeRez4",
+  "paramCount": 4,
+  "paramNames": [
+   "DownRez",
+   "Bright",
+   "Bassis",
+   "Output"
+  ],
+  "defaults": [
+   0.618,
+   0.618,
+   0.382,
+   1.0
+  ]
+ },
+ {
+  "name": "BitGlitter",
+  "paramCount": 4,
+  "paramNames": [
+   "Input",
+   "Glitter",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.0,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Bite",
+  "paramCount": 2,
+  "paramNames": [
+   "Bite",
+   "Output Level"
+  ],
+  "defaults": [
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Deckwrecka",
+  "paramCount": 1,
+  "paramNames": [
+   "Wreck"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "HipCrush",
+  "paramCount": 10,
+  "paramNames": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "F",
+   "G",
+   "H",
+   "I",
+   "J"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "Pockey",
+  "paramCount": 3,
+  "paramNames": [
+   "DeFreq",
+   "DeRez",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Pockey2",
+  "paramCount": 3,
+  "paramNames": [
+   "DeFreq",
+   "DeRez",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.66,
+   1.0
+  ]
+ },
+ {
+  "name": "uLawEncode",
+  "paramCount": 2,
+  "paramNames": [
+   "Gain",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "uLawDecode",
+  "paramCount": 2,
+  "paramNames": [
+   "Gain",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Discontinuity",
+  "paramCount": 1,
+  "paramNames": [
+   "Top dB"
+  ],
+  "defaults": [
+   0.5
+  ]
+ },
+ {
+  "name": "Disintegrate",
+  "paramCount": 5,
+  "paramNames": [
+   "Top dB",
+   "BufSize",
+   "Layers",
+   "Filter",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.2,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "DustBunny",
+  "paramCount": 1,
+  "paramNames": [
+   "Bunny"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "Fracture",
+  "paramCount": 4,
+  "paramNames": [
+   "Drive",
+   "Fracture",
+   "Out Lvl",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.25,
+   0.5,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Fracture2",
+  "paramCount": 5,
+  "paramNames": [
+   "Drive",
+   "Fractre",
+   "Thresh",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.1,
+   0.0,
+   0.5,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Trianglizer",
+  "paramCount": 2,
+  "paramNames": [
+   "Tri/Fat",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "SquareRoot",
+  "paramCount": 4,
+  "paramNames": [
+   "In",
+   "Soar",
+   "Out",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.0,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Remap",
+  "paramCount": 3,
+  "paramNames": [
+   "Remap",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Crystal",
+  "paramCount": 4,
+  "paramNames": [
+   "Hardnss",
+   "Personl",
+   "Drive",
+   "Output"
+  ],
+  "defaults": [
+   0.7,
+   1.0,
+   0.333,
+   1.0
+  ]
+ },
+ {
+  "name": "RingModulator",
+  "paramCount": 4,
+  "paramNames": [
+   "Freq",
+   "Freq",
+   "Soar",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "name": "Melt",
+  "paramCount": 4,
+  "paramNames": [
+   "Depth",
+   "Range",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.25,
+   0.75,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "PitchNasty",
+  "paramCount": 6,
+  "paramNames": [
+   "Note",
+   "Bend",
+   "Grind",
+   "Feedbck",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   0.25,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "GlitchShifter",
+  "paramCount": 5,
+  "paramNames": [
+   "Note",
+   "Trim",
+   "Tighten",
+   "Feedbck",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.0,
+   0.5
+  ]
+ },
+ {
+  "name": "Golem",
+  "paramCount": 3,
+  "paramNames": [
+   "Balance",
+   "Offset",
+   "Phase"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.0
+  ]
+ },
+ {
+  "name": "Creature",
+  "paramCount": 3,
+  "paramNames": [
+   "Drive",
+   "Depth",
+   "Inv/Wet"
+  ],
+  "defaults": [
+   0.26,
+   0.26,
+   1.0
+  ]
+ },
+ {
+  "name": "Sinew",
+  "paramCount": 1,
+  "paramNames": [
+   "Sinew"
+  ],
+  "defaults": [
+   0.5
+  ]
+ },
+ {
+  "name": "Facet",
+  "paramCount": 1,
+  "paramNames": [
+   "Facet"
+  ],
+  "defaults": [
+   1.0
+  ]
+ },
+ {
+  "name": "Energy",
+  "paramCount": 9,
+  "paramNames": [
+   "Hiss",
+   "Glitter",
+   "Rat",
+   "Fizz",
+   "Scrape",
+   "Chug",
+   "Yowr",
+   "Snarl",
+   "I/Dr/Wt"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Exciter",
+  "paramCount": 2,
+  "paramNames": [
+   "Freq",
+   "Excite"
+  ],
+  "defaults": [
+   0.6,
+   0.0
+  ]
+ },
+ {
+  "name": "Nikola",
+  "paramCount": 2,
+  "paramNames": [
+   "Voltage",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Distortion",
+  "paramCount": 4,
+  "paramNames": [
+   "Input",
+   "Mode",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Drive",
+  "paramCount": 4,
+  "paramNames": [
+   "Drive",
+   "Highpass",
+   "Out Level",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "BassDrive",
+  "paramCount": 5,
+  "paramNames": [
+   "Presnce",
+   "High",
+   "Mid",
+   "Low",
+   "Drive"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "GrindAmp",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Tone",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.8,
+   1.0
+  ]
+ },
+ {
+  "name": "BigAmp",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Tone",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.8,
+   1.0
+  ]
+ },
+ {
+  "name": "FireAmp",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Tone",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.8,
+   1.0
+  ]
+ },
+ {
+  "name": "LeadAmp",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Tone",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.8,
+   1.0
+  ]
+ },
+ {
+  "name": "MidAmp",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Tone",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.8,
+   1.0
+  ]
+ },
+ {
+  "name": "LilAmp",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Tone",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.8,
+   1.0
+  ]
+ },
+ {
+  "name": "HighImpact",
+  "paramCount": 3,
+  "paramNames": [
+   "Impact",
+   "Output Level",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "name": "HardVacuum",
+  "paramCount": 5,
+  "paramNames": [
+   "Drive",
+   "Warmth",
+   "Aura",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Density",
+  "paramCount": 4,
+  "paramNames": [
+   "Density",
+   "Highpass",
+   "Out Level",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.2,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Density2",
+  "paramCount": 4,
+  "paramNames": [
+   "Density",
+   "Highpass",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.2,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Density3",
+  "paramCount": 4,
+  "paramNames": [
+   "Density",
+   "Highpas",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Cider",
+  "paramCount": 4,
+  "paramNames": [
+   "Hardns",
+   "Persnlty",
+   "Drive",
+   "Output"
+  ],
+  "defaults": [
+   0.7,
+   0.3333333,
+   0.3333333,
+   1.0
+  ]
+ },
+ {
+  "name": "Edge",
+  "paramCount": 5,
+  "paramNames": [
+   "Gain",
+   "Lowpass",
+   "Highpass",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.1,
+   1.0,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Loud",
+  "paramCount": 3,
+  "paramNames": [
+   "Boost",
+   "Output Level",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Mojo",
+  "paramCount": 1,
+  "paramNames": [
+   "Input"
+  ],
+  "defaults": [
+   0.5
+  ]
+ },
+ {
+  "name": "Coils",
+  "paramCount": 3,
+  "paramNames": [
+   "Saturat",
+   "Core DC",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Coils2",
+  "paramCount": 3,
+  "paramNames": [
+   "Saturate",
+   "Cheapness",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "NCSeventeen",
+  "paramCount": 2,
+  "paramNames": [
+   "LOUDER",
+   "Output"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "SingleEndedTriode",
+  "paramCount": 4,
+  "paramNames": [
+   "Triode",
+   "Clas AB",
+   "Clas B",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "name": "Tube",
+  "paramCount": 1,
+  "paramNames": [
+   "TUBE"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "Tube2",
+  "paramCount": 2,
+  "paramNames": [
+   "Input",
+   "Tube"
+  ],
+  "defaults": [
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "UnBox",
+  "paramCount": 3,
+  "paramNames": [
+   "Input",
+   "UnBox",
+   "Output"
+  ],
+  "defaults": [
+   0.5,
+   0.0,
+   0.5
+  ]
+ },
+ {
+  "name": "Dirt",
+  "paramCount": 5,
+  "paramNames": [
+   "Gain",
+   "Lowpass",
+   "Highpass",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.1,
+   1.0,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "DrumSlam",
+  "paramCount": 3,
+  "paramNames": [
+   "Drive",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Compresaturator",
+  "paramCount": 5,
+  "paramNames": [
+   "Drive",
+   "Clamp",
+   "Expand",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "PurestDrive",
+  "paramCount": 1,
+  "paramNames": [
+   "Drive"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "MultiBandDistortion",
+  "paramCount": 9,
+  "paramNames": [
+   "Freqcy",
+   "H Gain",
+   "L Gain",
+   "H Hard",
+   "L Hard",
+   "H Mtrx",
+   "L Mtrx",
+   "Stable",
+   "Output"
+  ],
+  "defaults": [
+   0.5,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   1.0,
+   1.0,
+   1.0,
+   0.75
+  ]
+ },
+ {
+  "name": "Cabs",
+  "paramCount": 6,
+  "paramNames": [
+   "CabType",
+   "Intense",
+   "Rm Loud",
+   "CabSize",
+   "OffAxis",
+   "Output"
+  ],
+  "defaults": [
+   0.0,
+   0.66,
+   0.33,
+   0.66,
+   0.33,
+   0.5
+  ]
+ },
+ {
+  "name": "Preponderant",
+  "paramCount": 5,
+  "paramNames": [
+   "Narrow",
+   "Medium",
+   "Wide",
+   "Resonan",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.25,
+   0.5,
+   0.75,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Thunder",
+  "paramCount": 2,
+  "paramNames": [
+   "Thunder",
+   "Output Trim"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Inflamer",
+  "paramCount": 3,
+  "paramNames": [
+   "Drive",
+   "Curve",
+   "Effect"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "IronOxide5",
+  "paramCount": 7,
+  "paramNames": [
+   "Input Trim",
+   "Tape High",
+   "Tape Low",
+   "Flutter",
+   "Noise",
+   "Output Trim",
+   "Inv/Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.562341325190349,
+   0.562341325190349,
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "IronOxideClassic",
+  "paramCount": 3,
+  "paramNames": [
+   "Input Trim",
+   "Tape Speed",
+   "Output Trim"
+  ],
+  "defaults": [
+   0.5,
+   0.562341325190349,
+   0.5
+  ]
+ },
+ {
+  "name": "IronOxideClassic2",
+  "paramCount": 3,
+  "paramNames": [
+   "Input Trim",
+   "Tape Speed",
+   "Output Trim"
+  ],
+  "defaults": [
+   0.5,
+   0.562341325190349,
+   0.5
+  ]
+ },
+ {
+  "name": "ToTape6",
+  "paramCount": 6,
+  "paramNames": [
+   "Input",
+   "Soften",
+   "Head B",
+   "Flutter",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "ToVinyl4",
+  "paramCount": 4,
+  "paramNames": [
+   "Mid HiP",
+   "SideHiP",
+   "H Limit",
+   "Gv Wear"
+  ],
+  "defaults": [
+   0.203419,
+   0.3424051,
+   0.32,
+   0.064
+  ]
+ },
+ {
+  "name": "Tape",
+  "paramCount": 2,
+  "paramNames": [
+   "Slam",
+   "Bump"
+  ],
+  "defaults": [
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "TapeBias",
+  "paramCount": 1,
+  "paramNames": [
+   "Bias"
+  ],
+  "defaults": [
+   0.5
+  ]
+ },
+ {
+  "name": "TapeDust",
+  "paramCount": 2,
+  "paramNames": [
+   "Dust",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "TapeFat",
+  "paramCount": 2,
+  "paramNames": [
+   "Lean/Ft",
+   "Depth"
+  ],
+  "defaults": [
+   1.0,
+   0.0
+  ]
+ },
+ {
+  "name": "TapeHack",
+  "paramCount": 3,
+  "paramNames": [
+   "Input",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.1,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "ChromeOxide",
+  "paramCount": 2,
+  "paramNames": [
+   "Intense",
+   "Bias"
+  ],
+  "defaults": [
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "GrooveWear",
+  "paramCount": 2,
+  "paramNames": [
+   "Wear",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.064,
+   1.0
+  ]
+ },
+ {
+  "name": "CrunchyGrooveWear",
+  "paramCount": 2,
+  "paramNames": [
+   "Freq",
+   "Apply"
+  ],
+  "defaults": [
+   0.064,
+   1.0
+  ]
+ },
+ {
+  "name": "Dubly",
+  "paramCount": 2,
+  "paramNames": [
+   "Dubly",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "FromTape",
+  "paramCount": 5,
+  "paramNames": [
+   "Louder",
+   "Softer",
+   "Weight",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Flutter",
+  "paramCount": 1,
+  "paramNames": [
+   "Flutter"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "Flutter2",
+  "paramCount": 3,
+  "paramNames": [
+   "Flutter",
+   "Speed",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "PowerSag",
+  "paramCount": 2,
+  "paramNames": [
+   "Depth",
+   "Speed"
+  ],
+  "defaults": [
+   0.0,
+   0.3
+  ]
+ },
+ {
+  "name": "PowerSag2",
+  "paramCount": 2,
+  "paramNames": [
+   "Range",
+   "Inv/Wet"
+  ],
+  "defaults": [
+   0.3,
+   0.5
+  ]
+ },
+ {
+  "name": "Luxor",
+  "paramCount": 4,
+  "paramNames": [
+   "Hardns",
+   "Persnlty",
+   "Drive",
+   "Output"
+  ],
+  "defaults": [
+   0.7,
+   0.3333333,
+   0.3333333,
+   1.0
+  ]
+ },
+ {
+  "name": "Desk4",
+  "paramCount": 6,
+  "paramNames": [
+   "Overdrive",
+   "Hi Choke",
+   "Power Sag",
+   "Frequency",
+   "Output Trim",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.27,
+   0.18,
+   0.26,
+   0.54,
+   0.84,
+   1.0
+  ]
+ },
+ {
+  "name": "StudioTan",
+  "paramCount": 1,
+  "paramNames": [
+   "Quantzr"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "Apicolypse",
+  "paramCount": 4,
+  "paramNames": [
+   "Hardns",
+   "Persnlty",
+   "Drive",
+   "Output"
+  ],
+  "defaults": [
+   0.7,
+   0.3333333,
+   0.3333333,
+   1.0
+  ]
+ },
+ {
+  "name": "Gatelope",
+  "paramCount": 5,
+  "paramNames": [
+   "Thresh",
+   "TrebSus",
+   "BassSus",
+   "AttackS",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0,
+   0.5,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "SoftGate",
+  "paramCount": 3,
+  "paramNames": [
+   "Thresh",
+   "Darken",
+   "Silence"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.0
+  ]
+ },
+ {
+  "name": "Pressure4",
+  "paramCount": 4,
+  "paramNames": [
+   "Pressure",
+   "Speed",
+   "Mewiness",
+   "Output Gain"
+  ],
+  "defaults": [
+   0.0,
+   0.2,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Pressure5",
+  "paramCount": 6,
+  "paramNames": [
+   "Pressre",
+   "Speed",
+   "Mewines",
+   "PawClaw",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.25,
+   1.0,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "BlockParty",
+  "paramCount": 2,
+  "paramNames": [
+   "Pound",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "ButterComp2",
+  "paramCount": 3,
+  "paramNames": [
+   "Compress",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Swell",
+  "paramCount": 3,
+  "paramNames": [
+   "Thresh",
+   "Swell",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.9,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Point",
+  "paramCount": 3,
+  "paramNames": [
+   "Input Trim",
+   "Point",
+   "Reaction Speed"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "Pop",
+  "paramCount": 3,
+  "paramNames": [
+   "Intenst",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.3,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Pop2",
+  "paramCount": 5,
+  "paramNames": [
+   "Compres",
+   "Attack",
+   "Release",
+   "Drive",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "StoneFireComp",
+  "paramCount": 10,
+  "paramNames": [
+   "Fire Th",
+   "Attack",
+   "Release",
+   "Fire",
+   "StoneTh",
+   "Attack",
+   "Release",
+   "Stone",
+   "Range",
+   "Ratio"
+  ],
+  "defaults": [
+   1.0,
+   0.5,
+   0.5,
+   0.5,
+   1.0,
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "BeziComp",
+  "paramCount": 3,
+  "paramNames": [
+   "Comp",
+   "Speed",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "Hypersoft",
+  "paramCount": 4,
+  "paramNames": [
+   "Input",
+   "Depth",
+   "Bright",
+   "Output"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "ADClip7",
+  "paramCount": 4,
+  "paramNames": [
+   "Boost",
+   "Soften",
+   "Enhance",
+   "Mode"
+  ],
+  "defaults": [
+   0.0,
+   0.5,
+   0.5,
+   0.0
+  ]
+ },
+ {
+  "name": "OneCornerClip",
+  "paramCount": 5,
+  "paramNames": [
+   "Input",
+   "Pos Thr",
+   "Neg Thr",
+   "Voicing",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.3333333333333333,
+   0.966,
+   0.966,
+   0.618,
+   1.0
+  ]
+ },
+ {
+  "name": "Slew",
+  "paramCount": 1,
+  "paramNames": [
+   "A"
+  ],
+  "defaults": [
+   0.5
+  ]
+ },
+ {
+  "name": "Slew2",
+  "paramCount": 1,
+  "paramNames": [
+   "Clamping"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "SlewSonic",
+  "paramCount": 2,
+  "paramNames": [
+   "Mute",
+   "Bright"
+  ],
+  "defaults": [
+   0.5,
+   0.0
+  ]
+ },
+ {
+  "name": "GoldenSlew",
+  "paramCount": 1,
+  "paramNames": [
+   "Slew"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "Acceleration",
+  "paramCount": 2,
+  "paramNames": [
+   "Limit",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.32,
+   1.0
+  ]
+ },
+ {
+  "name": "Acceleration2",
+  "paramCount": 2,
+  "paramNames": [
+   "Limit",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.32,
+   1.0
+  ]
+ },
+ {
+  "name": "Surge",
+  "paramCount": 2,
+  "paramNames": [
+   "Surge",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "SurgeTide",
+  "paramCount": 3,
+  "paramNames": [
+   "SurgeNode",
+   "SurgeRate",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.3,
+   1.0
+  ]
+ },
+ {
+  "name": "Pyewacket",
+  "paramCount": 3,
+  "paramNames": [
+   "Input Gain",
+   "Release",
+   "Output Gain"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "Chorus",
+  "paramCount": 3,
+  "paramNames": [
+   "Speed",
+   "Range",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "ChorusEnsemble",
+  "paramCount": 3,
+  "paramNames": [
+   "Speed",
+   "Range",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.8
+  ]
+ },
+ {
+  "name": "StereoChorus",
+  "paramCount": 2,
+  "paramNames": [
+   "Speed",
+   "Depth"
+  ],
+  "defaults": [
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "name": "Ensemble",
+  "paramCount": 4,
+  "paramNames": [
+   "Ensemble",
+   "Fullness",
+   "Brighten",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.0,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Vibrato",
+  "paramCount": 5,
+  "paramNames": [
+   "Speed",
+   "Depth",
+   "FMSpeed",
+   "FMDepth",
+   "Inv/Wet"
+  ],
+  "defaults": [
+   0.3,
+   0.0,
+   0.4,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Tremolo",
+  "paramCount": 2,
+  "paramNames": [
+   "Speed",
+   "Depth"
+  ],
+  "defaults": [
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "TremoSquare",
+  "paramCount": 2,
+  "paramNames": [
+   "Freq",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "AutoPan",
+  "paramCount": 4,
+  "paramNames": [
+   "Rate",
+   "Phase",
+   "Wide",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.1,
+   0.5,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "PhaseNudge",
+  "paramCount": 2,
+  "paramNames": [
+   "Phase Nudge",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Spiral2",
+  "paramCount": 5,
+  "paramNames": [
+   "Input",
+   "Highpass",
+   "Presence",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.0,
+   0.5,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "StereoDoubler",
+  "paramCount": 2,
+  "paramNames": [
+   "Detune",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.6,
+   0.6
+  ]
+ },
+ {
+  "name": "TripleSpread",
+  "paramCount": 3,
+  "paramNames": [
+   "Spread",
+   "Tighten",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "Wider",
+  "paramCount": 3,
+  "paramNames": [
+   "Width",
+   "Center",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "PaulWide",
+  "paramCount": 2,
+  "paramNames": [
+   "Quant",
+   "DeRez"
+  ],
+  "defaults": [
+   1.0,
+   0.0
+  ]
+ },
+ {
+  "name": "SweetWide",
+  "paramCount": 2,
+  "paramNames": [
+   "Soar",
+   "Un/Wide"
+  ],
+  "defaults": [
+   0.0,
+   0.5
+  ]
+ },
+ {
+  "name": "Isolator",
+  "paramCount": 3,
+  "paramNames": [
+   "Freq",
+   "High",
+   "Low"
+  ],
+  "defaults": [
+   1.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Isolator2",
+  "paramCount": 4,
+  "paramNames": [
+   "Freq",
+   "Reso",
+   "High",
+   "Low"
+  ],
+  "defaults": [
+   1.0,
+   0.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Isolator3",
+  "paramCount": 2,
+  "paramNames": [
+   "Iso",
+   "Q"
+  ],
+  "defaults": [
+   0.5,
+   0.0
+  ]
+ },
+ {
+  "name": "AngleFilter",
+  "paramCount": 4,
+  "paramNames": [
+   "Freq",
+   "Hard",
+   "Reso",
+   "Poles"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.0,
+   0.5
+  ]
+ },
+ {
+  "name": "ZAcidLowpass",
+  "paramCount": 6,
+  "paramNames": [
+   "Cutoff",
+   "Over",
+   "Under",
+   "Meltdwn",
+   "Drive",
+   "Output"
+  ],
+  "defaults": [
+   0.5,
+   0.0,
+   1.0,
+   0.0,
+   0.1,
+   1.0
+  ]
+ },
+ {
+  "name": "ZLowpass2",
+  "paramCount": 4,
+  "paramNames": [
+   "Input",
+   "Freq",
+   "Output",
+   "Poles"
+  ],
+  "defaults": [
+   0.1,
+   0.5,
+   1.0,
+   0.5
+  ]
+ },
+ {
+  "name": "ZHighpass2",
+  "paramCount": 4,
+  "paramNames": [
+   "Input",
+   "Freq",
+   "Output",
+   "Poles"
+  ],
+  "defaults": [
+   0.1,
+   0.5,
+   1.0,
+   0.5
+  ]
+ },
+ {
+  "name": "ZBandpass2",
+  "paramCount": 4,
+  "paramNames": [
+   "Input",
+   "Freq",
+   "Output",
+   "Poles"
+  ],
+  "defaults": [
+   0.1,
+   0.5,
+   1.0,
+   0.5
+  ]
+ },
+ {
+  "name": "ZNotch2",
+  "paramCount": 4,
+  "paramNames": [
+   "Input",
+   "Freq",
+   "Output",
+   "Poles"
+  ],
+  "defaults": [
+   0.1,
+   0.5,
+   1.0,
+   0.5
+  ]
+ },
+ {
+  "name": "XLowpass",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Freq",
+   "Nuke",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   1.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "XHighpass",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Freq",
+   "Nuke",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   1.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "XBandpass",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Freq",
+   "Nuke",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "XNotch",
+  "paramCount": 4,
+  "paramNames": [
+   "Gain",
+   "Freq",
+   "Nuke",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   1.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Capacitor",
+  "paramCount": 3,
+  "paramNames": [
+   "Lowpass",
+   "Highpass",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   1.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Capacitor2",
+  "paramCount": 4,
+  "paramNames": [
+   "Lowpass",
+   "Highpass",
+   "NonLin",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   1.0,
+   0.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Hombre",
+  "paramCount": 2,
+  "paramNames": [
+   "Voicing",
+   "Intensity"
+  ],
+  "defaults": [
+   0.421,
+   0.5
+  ]
+ },
+ {
+  "name": "ResEQ",
+  "paramCount": 9,
+  "paramNames": [
+   "Reso 1",
+   "Reso 2",
+   "Reso 3",
+   "Reso 4",
+   "Reso 5",
+   "Reso 6",
+   "Reso 7",
+   "Reso 8",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "name": "Aura",
+  "paramCount": 2,
+  "paramNames": [
+   "Voicing",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   1.0
+  ]
+ },
+ {
+  "name": "Beam",
+  "paramCount": 3,
+  "paramNames": [
+   "Quant",
+   "Focus",
+   "DeRez"
+  ],
+  "defaults": [
+   1.0,
+   0.5,
+   0.0
+  ]
+ },
+ {
+  "name": "Zoom",
+  "paramCount": 1,
+  "paramNames": [
+   "Zoom"
+  ],
+  "defaults": [
+   0.5
+  ]
+ },
+ {
+  "name": "Texturize",
+  "paramCount": 3,
+  "paramNames": [
+   "Bright",
+   "Punchy",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "name": "Silhouette",
+  "paramCount": 1,
+  "paramNames": [
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0
+  ]
+ },
+ {
+  "name": "Cojones",
+  "paramCount": 5,
+  "paramNames": [
+   "Breathy",
+   "Cojones",
+   "Body",
+   "Output",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.5,
+   0.5,
+   0.5,
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "name": "Dark",
+  "paramCount": 2,
+  "paramNames": [
+   "Quant",
+   "DeRez"
+  ],
+  "defaults": [
+   1.0,
+   0.0
+  ]
+ },
+ {
+  "name": "Floor",
+  "paramCount": 3,
+  "paramNames": [
+   "Floor",
+   "Drive",
+   "Dry/Wet"
+  ],
+  "defaults": [
+   0.0,
+   0.0,
+   1.0
+  ]
+ },
+ {
+  "name": "SubTight",
+  "paramCount": 2,
+  "paramNames": [
+   "Trim",
+   "Steep"
+  ],
+  "defaults": [
+   0.3,
+   0.5
+  ]
+ }
+]
