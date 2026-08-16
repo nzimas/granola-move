@@ -241,6 +241,14 @@ A held slot glows white so you can see the hold is registered. Locked slots are 
 
 A slot blinks while saving. Occupied slots are visibly brighter.
 
+**A save will not replace a filled slot with an empty machine.** Granola starts empty, so a
+restart — or a crash — leaves nothing loaded; a save pressed afterwards would otherwise
+faithfully record that emptiness over your work. It refuses and says `SLOT n NOT EMPTIED`.
+
+**Gesture loops survive a restart.** They are written to `state/gestures.json` whenever one
+is recorded or cleared, and restored on launch. They used to live only in memory, which
+meant any restart threw them away silently.
+
 ---
 
 ## The sample harvester

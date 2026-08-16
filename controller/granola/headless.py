@@ -49,6 +49,7 @@ CONTROL_FILE = IPC / "control.json"
 STATUS_FILE = IPC / "status.json"
 MODEL_FILE = STATE / "model.json"
 HARVEST_FILE = STATE / "harvest.json"
+GESTURE_FILE = STATE / "gestures.json"
 PROJECTS_DIR = Path(_env("GR_PROJECTS", "/data/UserData/granola/projects"))
 WEB_PORT = int(_env("GR_WEB_PORT", "7135"))
 FX_MANIFEST = Path(_env("GR_FX_MANIFEST", "/data/UserData/granola/airwindows-manifest.json"))
@@ -158,6 +159,7 @@ class Controller:
         # it is restored even though the model is not. Entries whose file has since gone
         # are dropped rather than shown as pads that do nothing.
         self._load_batch()
+        self._load_gestures()
 
         self._pool = samples_mod.discover((SAMPLES_DIR,))
         print("[granola] %d sample(s) in %s" % (len(self._pool), SAMPLES_DIR), flush=True)
@@ -570,6 +572,35 @@ class Controller:
         if keep:
             print("[granola] restored %d harvested sample(s)" % len(keep), flush=True)
 
+    def _save_gestures(self) -> None:
+        """Gesture loops lived only in memory, so any restart silently threw them away —
+        which is exactly what happened to an hour of recorded playhead loops. They are
+        cheap to write and impossible to reconstruct, so they go to disk."""
+        try:
+            GESTURE_FILE.write_text(json.dumps(
+                {str(k): {"events": v["events"], "len": v.get("len", 0.0)}
+                 for k, v in self.gest.items() if v.get("len")}))
+        except OSError:
+            pass
+
+    def _load_gestures(self) -> None:
+        try:
+            raw = json.loads(GESTURE_FILE.read_text())
+        except (OSError, json.JSONDecodeError):
+            return
+        now = time.monotonic()
+        for k, v in (raw or {}).items():
+            try:
+                idx = int(k)
+                ev = [(float(a), int(b)) for a, b in v.get("events") or []]
+            except (TypeError, ValueError):
+                continue
+            if 0 <= idx < N_TRACKS and ev and v.get("len"):
+                self.gest[idx] = {"events": ev, "len": float(v["len"]),
+                                  "start": now, "idx": 0}
+        if self.gest:
+            print("[granola] restored %d gesture loop(s)" % len(self.gest), flush=True)
+
     def _save_batch(self) -> None:
         try:
             HARVEST_FILE.write_text(json.dumps(
@@ -609,6 +640,7 @@ class Controller:
                 g["start"] = time.monotonic()
                 g["idx"] = 0
                 self._notify("LOOP T%d %.1fs" % (t + 1, g["len"]))
+        self._save_gestures()
         self._dirty = True
 
     def gesture_capture(self, track: int, step: int) -> None:
@@ -626,6 +658,7 @@ class Controller:
             self._notify("T%d NO LOOP" % (t + 1))
         if self._rec_track == t:
             self._rec_track = None
+        self._save_gestures()
         self._dirty = True
 
     def gesture_clear_all(self) -> None:
@@ -633,6 +666,7 @@ class Controller:
         self.gest.clear()
         self._rec_track = None
         self._notify("ALL LOOPS CLEARED (%d)" % n)
+        self._save_gestures()
         self._dirty = True
 
     def _gesture_tick(self) -> None:
@@ -774,8 +808,22 @@ class Controller:
 
     def save_project(self, slot: int, name: str | None = None) -> bool:
         """Save the live machine into a slot. The blink window is opened FIRST so the
-        hardware shows the save even though the write itself is over in milliseconds."""
+        hardware shows the save even though the write itself is over in milliseconds.
+
+        AN EMPTY MACHINE NEVER OVERWRITES A FILLED SLOT. This is not a hypothetical: a
+        restart leaves the instrument empty by design, and a save pressed afterwards
+        faithfully recorded that emptiness over an hour of work. A save that would destroy
+        a project and replace it with nothing is far more likely to be a mistake than an
+        intention, so it is refused and said out loud.
+        """
         with self._lock:
+            empty = not any(t.sample_path for t in self.model.tracks)
+            if empty and 0 <= slot < len(self.projects.filled) and self.projects.filled[slot]:
+                self._notify("SLOT %d NOT EMPTIED" % (slot + 1))
+                print("[granola] refused to overwrite project %d with an empty machine"
+                      % (slot + 1), flush=True)
+                self._dirty = True
+                return False
             self._saving = slot
             self._saving_until = time.monotonic() + SAVE_BLINK_SEC
             doc = self.model.snapshot()
