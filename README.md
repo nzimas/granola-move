@@ -207,6 +207,26 @@ again.
 | 3 | **Delay send** |
 | 4 | **Reverb send** |
 
+### Master reverb and delay
+
+Both are adjustable from the **web UI** and saved with the project. Until now nothing ever
+sent them a value, so they ran at their SynthDef defaults permanently — which is why a
+reverb that felt too quiet could not be turned up.
+
+| | |
+|---|---|
+| reverb | level, decay, size, damp, predelay, width |
+| delay | level, time L/R, feedback, cross-feed, damp |
+
+`amp` is the **return level**, and it is the control to reach for when an effect is there
+but too quiet to hear. Measured with one track at 100% reverb send: dry alone 0.174, plus
+the reverb at its default level 0.271, and at level 3.0 it reaches 0.592.
+
+Track sends are **post-fader** (as in the original), so a track's own level scales what it
+feeds the effects — a 100% send on a quiet track is still a quiet send. Both effects feed
+the performance bus rather than the mix, again by the original's design, so an active FX
+chain processes their returns too.
+
 ### View 4 — performance FX (Track 4)
 
 | gesture | what it does |
