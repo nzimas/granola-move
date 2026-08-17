@@ -419,10 +419,12 @@ function renderPadsFX() {
 function renderPadsHarv() {
     for (let t = 0; t < N_TRACKS; t++) {
         const pair = TRACK_COL[t];
-        /* Track pads are MOMENTARY here — they are a destination to tap, not a state to
-         * hold — so they sit at their track's dark hue and flash their lit hue when one
-         * has just received a sample. */
-        setLED(PAD_NOTES[t], t === harvFlash ? White : pair[1]);
+        /* Track pads are MOMENTARY here — a destination to tap, not a state to hold — so
+         * they sit at their track's hue. BRIGHT means that track already holds a sample,
+         * dark means it is empty: the performer can see at a glance which parts are still
+         * waiting for material, without leaving the harvester to check. White is the
+         * flash confirming a sample has just landed there. */
+        setLED(PAD_NOTES[t], t === harvFlash ? White : (loaded[t] ? pair[0] : pair[1]));
     }
     for (let i = 0; i < HARV_SAMPLES; i++) {
         const has = i < harvNames.length;

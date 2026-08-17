@@ -50,6 +50,21 @@ STATUS_FILE = IPC / "status.json"
 MODEL_FILE = STATE / "model.json"
 HARVEST_FILE = STATE / "harvest.json"
 GESTURE_FILE = STATE / "gestures.json"
+
+# Master effect parameters, with the SynthDef's own clip ranges. `amp` is the return level:
+# it is what you reach for when the reverb is there but too quiet to hear.
+MASTER_REVERB_DEFAULTS = {"amp": 1.0, "decay": 3.5, "size": 1.6, "damp": 0.35,
+                          "predelay": 0.025, "highMult": 0.55, "width": 1.0}
+MASTER_DELAY_DEFAULTS = {"amp": 1.0, "timeL": 0.375, "timeR": 0.5, "feedback": 0.45,
+                         "crossFeed": 0.35, "damp": 6500.0, "width": 1.0}
+MASTER_FX_RANGE = {
+    "amp": (0.0, 4.0), "decay": (0.1, 60.0), "size": (0.5, 5.0), "damp": (0.0, 1.0),
+    "predelay": (0.0, 0.5), "highMult": (0.0, 1.0), "width": (0.0, 2.0),
+    "timeL": (0.001, 10.0), "timeR": (0.001, 10.0), "feedback": (0.0, 0.98),
+    "crossFeed": (0.0, 1.0),
+}
+# `damp` means different things either side: 0..1 in the reverb, a cutoff in the delay.
+MASTER_DELAY_RANGE = dict(MASTER_FX_RANGE, damp=(200.0, 18000.0))
 PROJECTS_DIR = Path(_env("GR_PROJECTS", "/data/UserData/granola/projects"))
 WEB_PORT = int(_env("GR_WEB_PORT", "7135"))
 FX_MANIFEST = Path(_env("GR_FX_MANIFEST", "/data/UserData/granola/airwindows-manifest.json"))
@@ -130,6 +145,12 @@ class Controller:
         self.gest: dict[int, dict] = {}
         self._rec_track: int | None = None
         self._rec_t0 = 0.0
+        # --- master reverb and delay ---
+        # These were never controllable from anywhere: the engine carried the SynthDef
+        # defaults and nothing ever sent a value, so a reverb that felt too quiet could
+        # not be turned up. Ranges match the SynthDef's own clips.
+        self.reverb = dict(MASTER_REVERB_DEFAULTS)
+        self.delay = dict(MASTER_DELAY_DEFAULTS)
 
     # -- startup ----------------------------------------------------------- #
     def start(self) -> None:
@@ -228,6 +249,7 @@ class Controller:
         with self._lock:
             self.bridge.master(self.model.master)
             self.bridge.run(self.running)
+            self._push_master_fx()
             for t in self.model.tracks:
                 self.bridge.mute(t.index, t.mute)
                 # Every parameter, not just the four on the pads: the engine's graph is
@@ -746,6 +768,8 @@ class Controller:
         """
         return {
             "running": self.running,
+            "reverb": dict(self.reverb),
+            "delay": dict(self.delay),
             "fxTracks": sorted(self.fx_tracks),
             "fxSlots": [{
                 "active": s.active,
@@ -766,6 +790,18 @@ class Controller:
 
     def _apply_machine(self, m: dict) -> None:
         """Put a saved machine block back, chains and all."""
+        for which, store, defaults in (("reverb", self.reverb, MASTER_REVERB_DEFAULTS),
+                                       ("delay", self.delay, MASTER_DELAY_DEFAULTS)):
+            saved = m.get(which)
+            store.update(defaults)
+            if isinstance(saved, dict):
+                for k, v in saved.items():
+                    if k in store:
+                        try:
+                            store[k] = float(v)
+                        except (TypeError, ValueError):
+                            pass
+        self._push_master_fx()
         by_name = {e.name: e for e in self.catalog.effects}
         for i, snap in enumerate(m.get("fxSlots") or []):
             if i >= len(self.fx_slots):
@@ -832,6 +868,27 @@ class Controller:
         self._notify(("SAVED %d" % (slot + 1)) if ok else "SAVE FAILED")
         self._dirty = True
         return ok
+
+    def set_master_fx(self, which: str, key: str, value: float) -> float | None:
+        """Set one master reverb or delay parameter and push it at the engine."""
+        store = self.reverb if which == "reverb" else self.delay
+        ranges = MASTER_FX_RANGE if which == "reverb" else MASTER_DELAY_RANGE
+        if key not in store or key not in ranges:
+            return None
+        lo, hi = ranges[key]
+        v = max(lo, min(hi, float(value)))
+        store[key] = v
+        with self._lock:
+            if which == "reverb":
+                self.bridge.reverb([(key, v)])
+            else:
+                self.bridge.delay([(key, v)])
+        self._dirty = True
+        return v
+
+    def _push_master_fx(self) -> None:
+        self.bridge.reverb(list(self.reverb.items()))
+        self.bridge.delay(list(self.delay.items()))
 
     def new_project(self, slot: int) -> bool:
         """Start a blank project in an empty slot.
@@ -1231,6 +1288,8 @@ class Controller:
                 # routed. The UI needs both to avoid a lit pad that makes no sound.
                 "fxLive": bool(self.fx_tracks),
                 "harvest": self.harvest_state,
+                "reverb": dict(self.reverb),
+                "delay": dict(self.delay),
                 "rec": self.gesture_state,
                 "fxCount": len(self.catalog),
                 "fxCost": round(self.fx_cost, 1),

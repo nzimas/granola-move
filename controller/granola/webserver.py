@@ -30,6 +30,7 @@ Routes
     POST /api/fx/track          {track, on?}         route a track through the chain
     POST /api/harvest           {count?}             start a harvest batch
     POST /api/harvest/duration  {min, max}           excerpt length range, 3-20 s
+    POST /api/masterfx          {which, key, value}  master reverb / delay parameter
     POST /api/harvest/assign    {sample, track}      put a harvested sample on a track
     POST /api/rescan
 """
@@ -307,6 +308,12 @@ class Handler(BaseHTTPRequestHandler):
             ok = c.set_fx_track(t, (t not in c.fx_tracks) if want is None else bool(want))
             return self._send(200 if ok else 400, {"ok": ok, "tracks": sorted(c.fx_tracks)})
 
+        if u.path == "/api/masterfx":
+            v = c.set_master_fx(b.get("which", "reverb"), b.get("key", ""), b.get("value", 0))
+            if v is None:
+                return self._send(400, {"ok": False, "error": "unknown parameter"})
+            return self._send(200, {"ok": True, "value": v})
+
         if u.path == "/api/harvest/duration":
             lo, hi = c.set_harvest_dur(b.get("min", 4), b.get("max", 9))
             return self._send(200, {"ok": True, "min": lo, "max": hi})
@@ -492,7 +499,14 @@ PAGE = r"""<!doctype html><html lang="en"><head>
  .drop{border:1.5px dashed var(--line);border-radius:10px;padding:14px;text-align:center;color:var(--dim);
        font-size:12px;margin:8px}
  .drop.hot{border-color:var(--acc);color:var(--acc)}
- .hvrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+ .mfx{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;align-items:center}
+.mfx .grp{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;
+  min-width:56px}
+.mfx label{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--faint)}
+.mfx input{width:82px}
+.mfx b{color:var(--fg);font-variant-numeric:tabular-nums;font-size:12px;min-width:42px;
+  display:inline-block;text-align:right}
+.hvrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
 .hvrow label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
 .hvrow input{width:66px;background:#0c0c0e;border:1px solid #2a2a30;color:var(--fg);
   border-radius:6px;padding:5px 7px;font:inherit;font-size:13px}
@@ -560,6 +574,14 @@ PAGE = r"""<!doctype html><html lang="en"><head>
     </div>
   </div>
   <div class="chain" id="fxsummary">no chain</div>
+</div>
+
+<div class="card" id="masterfx">
+  <h2>Master reverb &amp; delay</h2>
+  <div class="mfx" id="mfx-reverb"></div>
+  <div class="mfx" id="mfx-delay"></div>
+  <div class="hvhint">Both feed the performance chain, so an FX chain processes them too.
+    <b>amp</b> is the return level — raise it if an effect is there but too quiet to hear.</div>
 </div>
 
 <div class="card" id="harvester">
@@ -743,6 +765,7 @@ function paint(){
   $('pjhint').textContent = saveArm ? 'Pick a slot to SAVE into…'
     : 'Click a slot to load · ' + (S.projCur>=0 ? ('project '+(S.projCur+1)+' loaded') : 'nothing loaded');
   paintHarvest(S.harvest);
+  paintMfx(S);
 }
 function esc(s){ return (s||'').replace(/[<>&]/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])); }
 
@@ -808,6 +831,44 @@ async function upload(f){
             if(target>=0) pick(j.path); else renderList(); }
   else toast(j.error||'Upload failed');
 }
+/* ---- master reverb / delay ---- */
+const MFX = {
+  reverb: [['amp','level',0,4,0.01],['decay','decay s',0.1,60,0.1],['size','size',0.5,5,0.01],
+           ['damp','damp',0,1,0.01],['predelay','pre s',0,0.5,0.005],['width','width',0,2,0.01]],
+  delay:  [['amp','level',0,4,0.01],['timeL','time L',0.001,10,0.001],['timeR','time R',0.001,10,0.001],
+           ['feedback','fb',0,0.98,0.01],['crossFeed','cross',0,1,0.01],['damp','damp Hz',200,18000,50]]
+};
+let mfxTouched = 0;
+function buildMfx(){
+  for(const which of ['reverb','delay']){
+    const host = document.getElementById('mfx-'+which);
+    host.innerHTML = '<span class="grp">'+which+'</span>';
+    for(const [key,label,lo,hi,step] of MFX[which]){
+      const l=document.createElement('label');
+      l.innerHTML = label+' <input type="range" min="'+lo+'" max="'+hi+'" step="'+step+
+                    '" id="mfx-'+which+'-'+key+'"><b id="mfxv-'+which+'-'+key+'">–</b>';
+      host.appendChild(l);
+      const inp=l.querySelector('input');
+      inp.oninput = ()=>{ mfxTouched=Date.now();
+        document.getElementById('mfxv-'+which+'-'+key).textContent=(+inp.value).toFixed(step<0.01?3:2); };
+      inp.onchange = async ()=>{ mfxTouched=Date.now();
+        await api('/api/masterfx',{which:which,key:key,value:+inp.value}); };
+    }
+  }
+}
+function paintMfx(S){
+  if(Date.now()-mfxTouched < 1500) return;   /* do not fight a hand on a slider */
+  for(const which of ['reverb','delay']){
+    const vals = S[which]; if(!vals) continue;
+    for(const [key,,,,step] of MFX[which]){
+      if(vals[key]==null) continue;
+      const i=document.getElementById('mfx-'+which+'-'+key);
+      const b=document.getElementById('mfxv-'+which+'-'+key);
+      if(i){ i.value=vals[key]; b.textContent=(+vals[key]).toFixed(step<0.01?3:2); }
+    }
+  }
+}
+
 /* ---- harvester ---- */
 let durTouched = 0;
 async function setDur(){
@@ -862,6 +923,6 @@ async function refresh(){
   else { stale = true; }          /* keep the last good state rather than blanking */
   paint();
 }
-build(); refresh(); setInterval(refresh, 700);
+build(); buildMfx(); refresh(); setInterval(refresh, 700);
 </script></body></html>
 """
